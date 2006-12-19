@@ -1,0 +1,11 @@
+#summary Status of this project
+
+= Introduction =
+
+Summarizing the status of this project.
+
+
+= Details =
+
+I wrote this all today and thought it might be helpful to others.  The trie itself is
+included along with a few other files I've used to play/test.
