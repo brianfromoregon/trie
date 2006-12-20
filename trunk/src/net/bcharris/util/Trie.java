@@ -298,6 +298,21 @@ public class Trie {
 			return distance - n.distance;
 		}
 		
+		@Override
+		public boolean equals(Object o) {
+			if (this == o)
+				return true;
+			
+			if (o == null)
+				return false;
+			
+			if (!(o instanceof DYMNode))
+				return false;
+			
+			DYMNode n = (DYMNode)o;
+			return distance == n.distance && n.node.occurances == node.occurances;
+		}
+		
 		public String toString() {
 			return word+":"+distance;
 		}
