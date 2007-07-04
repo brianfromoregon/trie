@@ -113,7 +113,7 @@ public class Trie {
 		// match ASAP which can be useful for a necessary early exit
 		PriorityQueue<DYMNode> pq = new PriorityQueue<DYMNode>();
 	
-		DYMNode best = new DYMNode(root, Distance.LD("", word), "");		
+		DYMNode best = new DYMNode(root, Distance.LD("", word), "", false);		
 		DYMNode cur = best;
 		TrieNode tmp;
 		int count=0;
@@ -131,21 +131,21 @@ public class Trie {
 					
 					// only add possibly better matches to the pqueue
 					if (distance <= cur.distance) {
-						// only store the word for "real" words
 						if (tmp.occurances == 0)
-							pq.add(new DYMNode(tmp, distance, null));
+							pq.add(new DYMNode(tmp, distance, tWord, false));
 						else
-							pq.add(new DYMNode(tmp, distance, tWord));
+							pq.add(new DYMNode(tmp, distance, tWord, true));
 					}
 				}
 			}
 			
 			DYMNode n = pq.poll();
+			
 			if (n == null)
 				break;
 			
 			cur = n;
-			if (n.word != null)
+			if (n.wordExists)
 				// if n is more optimal, set it as best
 				if (n.distance < best.distance || (n.distance == best.distance && n.node.occurances > best.node.occurances))
 					best = n;
@@ -284,11 +284,13 @@ public class Trie {
 		TrieNode node;
 		String word;
 		int distance;
+		boolean wordExists;
 		
-		DYMNode(TrieNode node, int distance, String word) {
+		DYMNode(TrieNode node, int distance, String word, boolean isRealWord) {
 			this.node = node;
 			this.distance = distance;
 			this.word = word;
+			this.wordExists = isRealWord;
 		}
 		
 		// break ties of distance with frequency
