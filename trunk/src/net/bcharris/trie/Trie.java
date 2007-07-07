@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-import net.bcharris.trie.util.Distance;
 
 /**
  * An implementation of a trie that 
@@ -25,11 +24,13 @@ public class Trie {
 	// current number of unique words in trie
 	private int size;
 	
+	// if this is a case sensitive trie
 	protected boolean caseSensitive;
 	
 	/**
-	 * @param caseSensitive If this Trie should be case-insensitive to the words it encounters.  This is
-	 * accomplished by converting String arguments to all functions to lower-case before proceeding.
+	 * @param caseSensitive If this Trie should be case-insensitive to the words it encounters. 
+	 * Case-insensitivity is accomplished by converting String arguments to all functions to 
+	 * lower-case before proceeding.
 	 */
 	public Trie(boolean caseSensitive) {
 		root = new TrieNode((char)0);

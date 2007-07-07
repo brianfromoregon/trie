@@ -1,9 +1,6 @@
-package net.bcharris.trie.util;
+package net.bcharris.trie;
 
-/**
- * @author Brian Harris (brian_bcharris_net)
- */
-public class Distance {
+class Distance {
 	
 	/**
 	 * Compute The Levenshtein distance between two strings.

@@ -12,6 +12,8 @@ import java.util.Map.Entry;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 
+
+// A TreeModel for a Trie
 class TrieTreeModel extends DefaultTreeModel
 {
 	TrieTreeModel(Trie trie)
@@ -20,11 +22,11 @@ class TrieTreeModel extends DefaultTreeModel
 	}
 }
 
+// A TreeNode for a TrieNode
 class TrieTreeNode implements TreeNode, Comparable<TrieTreeNode>
 {
 	final TrieTreeNode parent;
 	final TrieNode trieNode;
-//	final String word;
 
 	// flyweight design pattern
 	private static final Map<TrieNode, TrieTreeNode> tNodeMapping = new HashMap<TrieNode, TrieTreeNode>();
@@ -33,8 +35,6 @@ class TrieTreeNode implements TreeNode, Comparable<TrieTreeNode>
 	{
 		this.parent = parent;
 		this.trieNode = trieNode;
-//		this.word = getWord();
-//		wordMapping.put(word, this);
 	}
 
 	public static TrieTreeNode newInstance(TrieTreeNode parent, TrieNode trieNode)

@@ -3,6 +3,11 @@ package net.bcharris.trie;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
 
+
+/**
+ * A wrapper for a Trie which provides a TreeModel to display the underlying Trie.
+ * @author Brian Harris (brian_bcharris_net)
+ */
 public class ViewableTrie extends Trie
 {
 	private final TrieTreeModel treeModel;
@@ -36,6 +41,10 @@ public class ViewableTrie extends Trie
 		return false;
 	}
 	
+	/**
+	 * Get a TreeModel representing this Trie.
+	 * @return A TreeModel which will be updated with changes to this Trie.
+	 */
 	public TreeModel getTreeModel()
 	{
 		return treeModel;
