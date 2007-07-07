@@ -1,4 +1,4 @@
-package net.bcharris.trie;
+package net.bcharris.trie.util;
 
 /**
  * @author Brian Harris (brian_bcharris_net)

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+import net.bcharris.trie.util.Distance;
+
 /**
  * An implementation of a trie that 
  * dynamically grows and shrinks with word insertions 
