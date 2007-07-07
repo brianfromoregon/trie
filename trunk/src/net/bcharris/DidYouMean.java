@@ -1,32 +1,34 @@
 package net.bcharris;
 
-import java.io.BufferedReader;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
-import net.bcharris.util.Trie;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+
+import net.bcharris.trie.ViewableTrie;
 
 
-public class DidYouMean {
+public class DidYouMean extends JFrame {
 
-	private Trie trie;
+	private ViewableTrie trie;
 	
 	public DidYouMean() {
-		trie = new Trie();
+		trie = new ViewableTrie(false);
 	}
 	
 	public void go() throws Exception {
-		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		String s;
-		while ((s = in.readLine()) != null) {
-			if (trie.contains(s))
-				System.out.println("Yep!");
-			else
-				System.out.println("Nope, but did you mean: "+trie.bestMatch(s, Long.MAX_VALUE));
-		}
+		JTree jTree = new JTree(trie.getTreeModel());
+		getContentPane().add(new JScrollPane(jTree));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Trie Visualizer");
+        setPreferredSize(new Dimension(500, 600));
+        pack();
+        setVisible(true);
 	}
 	
 	/**
