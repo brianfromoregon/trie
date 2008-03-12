@@ -1,7 +1,7 @@
 #summary Status of this project
 #labels Featured
 
-I wrote this on Dec.18.2007 and thought it might be helpful to others (a search for 'trie' on
+I wrote this on Dec.18.2006 and thought it might be helpful to others (a search for 'trie' on
 this site yielded 0 reults).  The trie itself is included along with a few other files
 I've used to play/test.
 
