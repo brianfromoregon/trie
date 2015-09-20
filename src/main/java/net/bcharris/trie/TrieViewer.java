@@ -1,13 +1,17 @@
-package trietest;
+package net.bcharris.trie;
 
 import java.awt.Dimension;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+import net.bcharris.trie.ViewableTrie;
 import net.bcharris.trie.ViewableTrie;
 
 public class TrieViewer extends JFrame {
@@ -24,9 +28,14 @@ public class TrieViewer extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setTitle("Trie Visualizer");
-        setPreferredSize(new Dimension(500, 600));
+        setBounds(0, 0, 500, 600); //necessary to display with OpenJDK 7 on 
+                //Linux
         pack();
         setVisible(true);
+    }
+    
+    public void addToDictionary(File f) throws IOException, FileNotFoundException {
+        addToDictionary(new FileInputStream(f));
     }
 
     /**
@@ -34,15 +43,15 @@ public class TrieViewer extends JFrame {
      * a series of characters surrounded by whitespace.
      * @param f A file containing words.
      */
-    public void addToDictionary(File f)
+    public void addToDictionary(InputStream f)
             throws IOException, FileNotFoundException {
         long t = System.currentTimeMillis();
         final int bufSize = 1000;
         int read;
         int numWords = 0;
-        FileReader fr = null;
+        InputStreamReader fr = null;
         try {
-            fr = new FileReader(f);
+            fr = new InputStreamReader(f);
             char[] buf = new char[bufSize];
             while ((read = fr.read(buf)) != -1) {
                 // TODO modify this split regex to actually be useful
@@ -66,7 +75,7 @@ public class TrieViewer extends JFrame {
 
     public static void main(String[] args) throws Exception {
         TrieViewer tv = new TrieViewer();
-        tv.addToDictionary(new File("bible.txt"));
+        tv.addToDictionary(Thread.currentThread().getContextClassLoader().getResourceAsStream("bible.txt"));
         tv.go();
     }
 }
