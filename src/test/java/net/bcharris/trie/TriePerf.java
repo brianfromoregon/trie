@@ -1,8 +1,6 @@
-package trietest;
+package net.bcharris.trie;
 
 import java.util.Random;
-import net.bcharris.trie.Trie;
-import net.bcharris.trie.TrieImpl;
 
 /**
  *
